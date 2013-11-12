@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- <script src="http://cdn.socket.io/stable/socket.io.js"></script> -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    //var appPort = process.env['app_port'] || 3000;
+    //var socket = io.connect();
+    var socket = new io.Socket('localhost',{'port':appPort});
+    socket.connect();
+    socket.on('connect', function (data) {
+        console.log(data);
+        socket.emit('ferret', 'tobi', function (data) {
+            console.log(data); // data will be 'woot'
+        });
+    });
+</script>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://cdn.socket.io/stable/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var socket = new io.Socket('localhost',{'port':8090});
+
+        socket.connect();
+
+        socket.on('connect', function(){
+            console.log('connected');
+            socket.send('hi!');
+        });
+
+        socket.on('message', function(data){
+            console.log('message recived: ' + data);
+        });
+
+        socket.on('disconnect', function(){
+            console.log('disconected');
+        });
+    </script>
+</head>
+
+<body>
+<body lang="en">
+<h1>socketio,Nginx, Node.js Demo</h1>
+<p>
+    For test <br>
+    go to console and type :
+<p>  for sending message to server <br> io.sockets.on("test");
+</p>
+<p> for closing  <br> sockjs.close()
+<p>
+
+</p>
+</body>
+</html> -->
+
+
